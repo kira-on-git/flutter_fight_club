@@ -47,7 +47,7 @@ void main() {
     });
   });
 
-  /*group('l03h02', () {
+  group('l03h02', () {
     testWidgets('All Colors in Util Class FightClubColors', (WidgetTester tester) async {
       expect(
         FightClubColors.background,
@@ -75,9 +75,9 @@ void main() {
         isOneOrAnother(Color(0xDDFFFFFF), Color(0xDEFFFFFF)),
       );
     });
-  });*/
+  });
 
-  /*group("l03h03", () {
+  group("l03h03", () {
     testWidgets('Under FightersInfo there are background with two colors',
         (WidgetTester tester) async {
       await tester.pumpWidget(MyApp());
@@ -114,9 +114,9 @@ void main() {
         Color(0xFFC5D1EA),
       );
     });
-  });*/
+  });
 
-  /*group('l03h04', () {
+  group('l03h04', () {
     testWidgets('Centered box is expanded, has proper color and has proper size',
         (WidgetTester tester) async {
       void _testSizedBox(SizedBox sizedBox) {
@@ -176,9 +176,9 @@ void main() {
         }
       }
     });
-  });*/
+  });
 
-  /*group('l03h05', () {
+  group('l03h05', () {
     testWidgets('Correct avatars added to assets. Util class created. Avatars added to the scren',
         (WidgetTester tester) async {
       final String youAvatarPath = "assets/images/you-avatar.png";
@@ -230,7 +230,7 @@ void main() {
       expect(enemyImage.image, isInstanceOf<AssetImage>());
       expect((enemyImage.image as AssetImage).assetName, enemyAvatarPath);
     });
-  });*/
+  });
 }
 
 Matcher isOneOrAnother(dynamic one, dynamic another) => OneOrAnotherMatcher(one, another);
