@@ -112,7 +112,10 @@ class FightPageState extends State<FightPage> {
           SharedPreferences.getInstance().then((sharedPreferences) {
             sharedPreferences.setString(
                 "last_fight_result", fightResult.result);
-            //print(fightResult.result);
+            //task #6_1
+            final String key = "stats_${fightResult.result.toLowerCase()}";
+            final int currentValue = sharedPreferences.getInt(key) ?? 0;
+            sharedPreferences.setInt(key, currentValue + 1);
           });
         }
         centerText = _calculateCenterText(youLoseLife, enemyLoseLife);
