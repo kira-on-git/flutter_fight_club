@@ -1,75 +1,87 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fight_club/fight_result.dart';
 import 'package:flutter_fight_club/resources/fight_club_colors.dart';
 import 'package:flutter_fight_club/resources/fight_club_images.dart';
 
 class FightResultWidget extends StatelessWidget {
-  const FightResultWidget({Key? key}) : super(key: key);
+  final FightResult fightResult;
+
+  const FightResultWidget({Key? key, required this.fightResult})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      width: 132,
-      height: 150,
-      child:Row(children: [
-        Column(
-          children: [
-            //const SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.only(top: 16, bottom: 12),
-              child: Text('You',
-                  style: TextStyle(color: FightClubColors.darkGreyText)),
-            ),
-            //const SizedBox(height: 12),
-            Image.asset(FightClubImages.youAvatar, width: 92 ,height: 92)
-          ],
-        ),
-        SizedBox(
-          width: 44,
-          height: 44,
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: FightClubColors.blueButton),
-            child: Center(
-              child: Text(
-                'vs',
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
-            ),
+    return SizedBox(
+      height: 140,
+      child: Stack(
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                  child: ColoredBox(
+                color: Colors.white,
+              )),
+              Expanded(
+                  child: DecoratedBox(
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [Colors.white, FightClubColors.darkPurple])),
+              )),
+              Expanded(
+                  child: ColoredBox(
+                color: FightClubColors.darkPurple,
+              )),
+            ],
           ),
-        ),
-        Column(
-          children: [
-            //const SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.only(top: 16, bottom: 12),
-              child: Text('Enemy',
-                  style: TextStyle(color: FightClubColors.darkGreyText)),
-            ),
-            //const SizedBox(height: 12),
-            Image.asset(FightClubImages.enemyAvatar, width: 92 , height: 92),
-          ],
-        ),
-      ],)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const SizedBox(width: 8),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'You',
+                    style: TextStyle(
+                        color: FightClubColors.darkGreyText, fontSize: 14),
+                  ),
+                  const SizedBox(height: 10),
+                  Image.asset(FightClubImages.youAvatar, width: 92, height: 92)
+                ],
+              ),
+              Container(
+                //width: 44,
+                height: 44,
+                padding: EdgeInsets.symmetric(horizontal: 12,vertical: 4),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(22),
+                    shape: BoxShape.rectangle, color: fightResult.color),
+                child: Center(
+                  child: Text(
+                    fightResult.result.toLowerCase(),
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                ),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Enemy',
+                    style: TextStyle(
+                        color: FightClubColors.darkGreyText, fontSize: 14),
+                  ),
+                  const SizedBox(height: 10),
+                  Image.asset(FightClubImages.enemyAvatar,
+                      width: 92, height: 92),
+                ],
+              ),
+              const SizedBox(width: 8),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
-/*
-Column(
-children: [
-Padding(
-padding: const EdgeInsets.only(bottom: 6),
-child: Text(
-'Won: ',
-style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-),
-),
-Padding(
-padding: const EdgeInsets.only(bottom: 6),
-child: Text('Draw: '),
-),
-Text('Lost: '),
-],
-),*/

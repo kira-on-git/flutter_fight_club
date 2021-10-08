@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fight_club/fight_result.dart';
 import 'package:flutter_fight_club/pages/fight_page.dart';
 import 'package:flutter_fight_club/pages/statistics_page.dart';
 import 'package:flutter_fight_club/resources/fight_club_colors.dart';
 import 'package:flutter_fight_club/widgets/action_button.dart';
+import 'package:flutter_fight_club/widgets/fight_result_widget.dart';
 import 'package:flutter_fight_club/widgets/secondary_action_button.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -33,14 +35,8 @@ class _MainPageContent extends StatelessWidget {
                   TextStyle(fontSize: 30, color: FightClubColors.darkGreyText),
             ),
             Expanded(child: SizedBox()),
-            Text(
-              "результат",
-              style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w400,
-                  color: FightClubColors.darkGreyText),
-            ),
-            /*/FutureBuilder
+
+            //FutureBuilder
             FutureBuilder<String?>(
                 future: SharedPreferences.getInstance().then(
                   (sharedPreferences) =>
@@ -50,20 +46,32 @@ class _MainPageContent extends StatelessWidget {
                   if (!snapshot.hasData || snapshot.data == null) {
                     return const SizedBox();
                   }
-                  return Center(
-                    child: Text(snapshot.data!),
+                  final FightResult fightResult =
+                      FightResult.getByName(snapshot.data!);
+                  return Column(
+                    //mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'Last Fight Result',
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: FightClubColors.darkGreyText),
+                      ),
+                      const SizedBox(height: 12),
+                      FightResultWidget(fightResult: fightResult),
+                    ],
                   );
-                }),*/
+                }),
             Expanded(child: SizedBox()),
             SecondaryActionButton(
-              onTap:() {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => StatisticsPage(),
-                ));
-
-              },
-text: 'Statistics'
-            ),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => StatisticsPage(),
+                  ));
+                },
+                text: 'Statistics'),
             SizedBox(height: 12),
             ActionButton(
                 onTap: () {
