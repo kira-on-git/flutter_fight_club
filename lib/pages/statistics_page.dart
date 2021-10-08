@@ -9,32 +9,36 @@ class StatisticsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: FightClubColors.background,
-      body: Column(
-        children: [
-          //Expanded(child: SizedBox()),
-          Container(
-            color: Colors.lightBlueAccent,
-            //alignment: Alignment.center,
-            margin: const EdgeInsets.only(left: 16,top: 24,right: 16),
-            height: 40,
-            child: Text(
-              "Statistics",
-              style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w400,
-                  color: FightClubColors.darkGreyText),
+      body: SafeArea(
+        child: Column(
+          children: [
+            //Expanded(child: SizedBox()),
+            Container(
+              color: Colors.lightBlueAccent,
+              //alignment: Alignment.center,
+              margin: const EdgeInsets.only(left: 16,top: 24.0,right: 16),
+              height: 40,
+              child: Text(
+                "Statistics",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w400,
+                    color: FightClubColors.darkGreyText,
+                 ),
+              ),
             ),
-          ),
-          //Expanded(child: SizedBox()),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 16),
-            child: SecondaryActionButton(
-                onTap: () {
-                  Navigator.of(context).pop();
-                },
-                text: 'Back'),
-          ),
-        ],
+            Expanded(child: SizedBox()),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 16),
+              child: SecondaryActionButton(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  text: 'Back'),
+            ),
+          ],
+        ),
       ),
     );
   }
