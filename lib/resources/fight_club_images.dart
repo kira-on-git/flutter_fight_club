@@ -6,4 +6,3 @@ class FightClubImages {
   static const enemyAvatar = "assets/images/enemy-avatar.png";
 
 }
-//hometask_widgets_2

@@ -12,4 +12,3 @@ class FightClubColors {
   static const Color whiteText = Color.fromRGBO(255, 255, 255, 0.87);
   static const Color darkPurple = Color(0xFFC5D1EA);
 }
-//hometask_widgets_2

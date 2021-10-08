@@ -6,5 +6,3 @@ class FightClubIcons {
   static const heartEmpty = "assets/icons/heart-empty.png";
 
 }
-
-//hometask_widgets_2
